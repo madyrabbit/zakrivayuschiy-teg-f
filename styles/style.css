@@ -13,8 +13,469 @@
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 
 */
+img {
+  display: block;
+  max-block-size: 100%;
+  inline-size: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font, sans-serif);
+  font-variation-settings: 'wdth' var(--main-wdth, 400);
+  background-color: var(--bg-color, #fff);
+  color: var(--main-color, #000);
+  background-size: cover;
+  background-image: var(--bg-gradient, repeating-linear-gradient(90deg, var(--main-gradient-color, #d3d3d3), var(--main-gradient-color, #d3d3d3) 2px, transparent 2px, transparent 4px), repeating-linear-gradient(180deg, var(--main-gradient-color, #d3d3d3), var(--main-gradient-color, #d3d3d3) 2px, transparent 2px, transparent 4px), linear-gradient(var(--main-gradient-color, #d3d3d3) 0.01%, var(--accent-gradient-color, #1a1a1a)));
+}
+
+/* ----ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ---- */
+
+/* --ФИЛЬТРЫ-- */
+.grayscale {
+  filter: grayscale(80%);
+}
+
+.brightness {
+  filter: brightness(0.4);
+}
+
+.contrast {
+  filter: contrast(500%);
+}
+
+.invert {
+  filter: invert(90%)
+}
+
+.retro {
+  filter: sepia(80%);
+}
+
+.bluer {
+  filter: blur(5px);
+}
+
+.retroblur{
+  filter: sepia(80%) blur(5px);
+}
+
+/* --КНОПКА-- */
+.button {
+  display: block;
+  position: relative;
+  border: var(--border-card, 2px solid var(--main-color, #000));
+  background-color: var(--bg-color, #fff);
+  cursor: pointer;
+  line-height: 90%;
+}
+
+.button:focus-visible {
+  box-shadow: var(--box-shadow, 2px 2px 0px 0px var(--color-box-shadow, #000));
+}
+
+.button::after {
+  position: absolute;
+  content: '';
+  inline-size: 100%;
+  block-size: 100%;
+  background-color: var(--main-color, #000);
+  inset-inline-start: 0;
+  inset-block-end: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+  color: var(--accent-text-color, #fff);
+  z-index: 0;
+}
+
+.button:hover:after {
+  transform: scaleX(1);
+  transition: transform 0.5s ease-in-out; 
+}
+
+
+
+/* ----ОСНОВНОЙ КОД---- */
+
+/* --ШАПКА САЙТА-- */
+header {
+  align-items: center;
+  margin-block: 100px;
+  padding-block-start: var(--header-padding-block-start, clamp(7.5rem, 7.153rem + 1.5vw, 8.5rem));
+  padding-block-end: 25px;
+  font-family: var(--accent-font, system-ui);
+  background-color: var(--bg-color, #fff);
+  color: var(--main-color, #000);
+}
+
+.header__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block-end: 23px;
+  gap: 20px;
+  text-transform: uppercase;
+}
+
+.header__title {
+  font-size: var(--size-title, clamp(3.063rem, 1.921rem + 4.92vw, 4.063rem));
+}
+
+.header__text {
+  font-size: var(--size-text, clamp(0.875rem, 0.233rem + 2.77vw, 1.438rem));
+}
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-inline-start: 18px;
+}
+
+.theme-menu__button {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.theme-menu__button::after {
+  position: absolute;
+  content: '';
+  inline-size: 100%;
+  block-size: 2px;
+  background-color: var(--main-color, #000);
+  inset-inline-start: 0;
+  inset-block-end: -2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.theme-menu__button:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.theme-menu__button:focus {
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus-visible::after {
+  opacity: 0.6;
+  transform: scaleX(1);
+  transition: transform 0.3s; 
+}
+
+.theme-menu__button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.theme-menu__button:disabled::before{
+  position: absolute;
+  content: '▶';
+  inset-block-end: 0;
+  inset-inline-start: -20px;
+  animation: arrow 0.5s ease-in-out infinite alternate-reverse;
+}
+
+
+
+/* ----ОСНОВНАЯ ЧАСТЬ САЙТЕ---- */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 50.5px;
+  @media (width <= 375px) {
+    gap: 51px;
+  }
+}
+
+.card {
+  margin-inline: 2px;
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  inline-size: var(--size-section, clamp(23.438rem, 16.285rem + 30.52vw, 43.75rem));
+  background-color: var(--bg-color, #fff);
+  border: var(--border-card, 2px solid var(--main-color, #000));
+}
+
+.card__content {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+}
+
+.card__title {
+  display: flex;
+  column-gap: 5px;
+  padding: 4px 24px 3px 10px;
+  font-size: 18px;
+  font-variation-settings: 'wdth' var(--title-wdth, 700);
+  border-block-end: var(--border-card, 2px solid var(--main-color, #000));
+    @media (width <= 375px) {
+      flex-direction: column;
+      padding: 3.5px 10px 5.5px;
+    }
+}
+
+.card__text {
+  padding-inline: 24.9px;
+  padding-block: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  font-size: 18px;
+  line-height: 21px;
+  border-block-start: 4px solid var(--main-color, #000);
+    @media (width <= 375px) {
+      padding-block: 22px 25px;
+      padding-inline: 25px 25.96px;
+    }
+}
+
+.card__img {
+  position: relative;
+}
+
+.card__img img {
+  display: block;
+  max-block-size: 100%;
+  inline-size: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card__img-overlay {
+  position: absolute;
+  font-family: var(--accent-font, system-ui);
+  -webkit-text-stroke: var(--text-shadow, 0.5px var(--color-text-shadow, #fff));
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  font-size: 14px;
+  inset-inline-end: 25px;
+  inset-block-start: 29px;
+  text-transform: uppercase;
+    @media (width <= 375px) {
+      inset-inline-end: 11.5px;
+      inset-block-start: 24px;
+    }
+}
+
+.card__button {
+  display: flex;
+  justify-content: flex-end;
+  margin-inline-end: 25px;
+  gap: 4px;
+  margin-block-end: 25px;
+}
+
+.card__icon-button {
+  position: relative;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  block-size: 38px;
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--main-color, #000);
+}
+
+.like-icon {
+  display: block;
+  max-block-size: 100%;
+  inline-size: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.core {
+  fill: transparent;
+  transition: fill 0.03s linear;
+}
+
+.heart:hover .core{
+  fill: var(--color-heart-core, #000);
+  transition: fill 0.3s linear;
+}
+
+.main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.heart:hover .main-body{
+  fill: var(--color-heart-core, #000);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.heart:active .core{
+  fill: var(--color-heart-body, #FF0000);
+  transition: fill 0.3s linear;
+}
+
+.heart:active .main-body{
+  fill: var(--color-heart-body, #FF0000);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--color-heart-body, #FF0000);
+  transition: fill 0.03s linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--color-heart-body, #FF0000);
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--color-heart-body, #FF0000);
+  transition: fill 0.3s 0.06s linear;
+}
+
+.like-icon.is-liked .heart{
+  animation: scale 0.3s 0.1s ease-in alternate-reverse;
+}
+
+.like-icon.is-liked .sparks{
+  opacity: 1;
+  animation: sparks 0.3s 0.3s ease-in alternate-reverse;
+}
+
+.card__like-button {
+  inline-size: 130px;
+  block-size: 38px;
+}
+
+.button__text,
+.button:hover .button__text,
+.dialog__text {
+  font-family: var(--accent-font, system-ui);
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  font-size: 14px;
+  color: var(--button-color, #fff);
+  mix-blend-mode: difference;
+}
+
+
+
+/* ----ПОДВАЛ САЙТА---- */
+.floppy__button {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.floppy__button .button__text {
+  @media (width <= 375px) {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.floppy__button {
+  padding-inline: 19px 21px;
+  padding-block: 15px;
+  margin-block: 50px 105px;
+  @media (width <= 375px) {
+    margin-block-start: 51px;
+    padding-block: 20px 14px;
+  }
+}
+
+.floppy-icon-footer {
+  @media (width <= 375px) {
+    transform: scale(1.4);
+  }
+}
+
+
+
+/* ----dialog---- */
+dialog {
+  position: fixed;
+  inline-size: clamp(21.313rem, 20.96rem + 1.5vw, 22.313rem);
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  background-color: var(--bg-color, #fff);
+  padding-inline: 31.5px 30.5px;
+  padding-block: 32.5px 31.5px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+dialog:not([open]) {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.dialog__text {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 20px;
+  height: 63px;
+}
+
+.floppy-icon-dialog {
+  display: block;
+  object-fit: cover;
+  inline-size: 30%;
+  block-size: calc(100% - 24px);
+}
+
+.dialog__button {
+  padding-inline: 132.5px;
+  padding-block: 12.5px;
+}
+
+
+
+/* ----АНИМАЦИЯ---- */
+@keyframes arrow {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-4px);
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+    transform-origin: center;
+  }
+
+  100% {
+    transform: scale(1.5);
+    transform-origin: center;
+  }
+}
+
+@keyframes sparks {
+  0% {
+    fill-opacity: 0;
+  }
+
+  100% {
+    fill-opacity: 1;
+  }
 }
