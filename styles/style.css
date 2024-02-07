@@ -27,9 +27,10 @@ img {
   background-color: var(--bg-color, #fff);
   background-image: var(--bg-gradient, repeating-linear-gradient(90deg, var(--main-gradient-color, #d3d3d3), var(--main-gradient-color, #d3d3d3) 2px, transparent 2px, transparent 4px), repeating-linear-gradient(180deg, var(--main-gradient-color, #d3d3d3), var(--main-gradient-color, #d3d3d3) 2px, transparent 2px, transparent 4px), linear-gradient(var(--main-gradient-color, #d3d3d3) 0.01%, var(--accent-gradient-color, #1a1a1a)));
   background-size: cover;
+  background-position: center;
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-variation-settings: 'wdth' var(--main-wdth, 400);
+  font-variation-settings: 'wght' var(--main-wdht, 400);
 }
 
 /* ----ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ---- */
@@ -83,7 +84,6 @@ img {
   z-index: 0;
   color: var(--accent-text-color, #fff);
   background-color: var(--main-color, #000);
-  transition: transform 0.5s ease-in-out;
   transform: scaleX(0);
   transform-origin: left;
   inline-size: 100%;
@@ -93,7 +93,6 @@ img {
 }
 
 .button:hover:after {
-  transition: transform 0.5s ease-in-out;
   transform: scaleX(1); 
 }
 
@@ -150,7 +149,6 @@ header {
   content: '';
   position: absolute;
   background-color: var(--main-color, #000);
-  transition: transform 0.3s;
   transform: scaleX(0);
   transform-origin: left;
   inline-size: 100%;
@@ -159,18 +157,13 @@ header {
   inset-block-end: -2px;
 }
 
-.theme-menu__button:hover {
-  opacity: 0.6;
-  transition: 0.3s;
-}
-
+.theme-menu__button:hover,
 .theme-menu__button:focus {
   opacity: 0.6;
 }
 
 .theme-menu__button:focus-visible::after {
   opacity: 0.6;
-  transition: transform 0.3s;
   transform: scaleX(1); 
 }
 
@@ -182,7 +175,6 @@ header {
 .theme-menu__button:disabled::before{
   content: '▶';
   position: absolute;
-  animation: arrow 0.5s ease-in-out infinite alternate-reverse;
   inset-block-end: 0;
   inset-inline-start: -20px;
 }
@@ -220,7 +212,7 @@ header {
   border-block-end: var(--border-card, 2px solid var(--main-color, #000));
   padding: 4px 24px 3px 10px;
   font-size: 18px;
-  font-variation-settings: 'wdth' var(--title-wdth, 700);
+  font-variation-settings: 'wght' var(--title-wght, 700);
     @media (width <= 375px) {
       flex-direction: column;
       padding: 3.5px 10px 5.5px;
@@ -260,7 +252,7 @@ header {
   font-family: var(--accent-font, system-ui);
   font-size: 14px;
   text-transform: uppercase;
-  -webkit-text-stroke: var(--text-shadow, 0.5px var(--color-text-shadow, #fff));
+  text-shadow: var(--text-shadow, 0.5px var(--color-text-shadow, #fff));
   mix-blend-mode: hard-light;
   inset-inline-end: 25px;
   inset-block-start: 29px;
@@ -282,7 +274,6 @@ header {
   position: relative;
   border: 2px solid transparent;
   background-color: transparent;
-  transition: border-color 0.3s ease;
   cursor: pointer;
   block-size: 38px;
 }
@@ -301,56 +292,50 @@ header {
 
 .core {
   fill: transparent;
-  transition: fill 0.03s linear;
 }
 
 .heart:hover .core{
   fill: var(--color-heart-core, #000);
-  transition: fill 0.3s linear;
+}
+
+.contour  {
+  fill: var(--color-heart-core, #000);
+}
+
+.heart:hover .contour {
+  fill: var(--color-heart-core, #000);
 }
 
 .main-body {
   fill: transparent;
-  transition: fill 0.3s linear;
 }
 
 .heart:hover .main-body{
   fill: var(--color-heart-core, #000);
-  transition: fill 0.3s 0.05s linear;
 }
 
 .heart:active .core{
   fill: var(--color-heart-body, #FF0000);
-  transition: fill 0.3s linear;
 }
 
 .heart:active .main-body{
   fill: var(--color-heart-body, #FF0000);
-  transition: fill 0.3s 0.05s linear;
 }
 
 .like-icon.is-liked .core {
   fill: var(--color-heart-body, #FF0000);
-  transition: fill 0.03s linear;
 }
 
 .like-icon.is-liked .main-body {
   fill: var(--color-heart-body, #FF0000);
-  transition: fill 0.3s linear;
 }
 
 .like-icon.is-liked .contour {
   fill: var(--color-heart-body, #FF0000);
-  transition: fill 0.3s 0.06s linear;
-}
-
-.like-icon.is-liked .heart{
-  animation: scale 0.3s 0.1s ease-in alternate-reverse;
 }
 
 .like-icon.is-liked .sparks{
   opacity: 1;
-  animation: sparks 0.3s 0.3s ease-in alternate-reverse;
 }
 
 .card__like-button {
@@ -359,7 +344,6 @@ header {
 }
 
 .button__text,
-.button:hover .button__text,
 .dialog__text {
   position: relative;
   z-index: 10;
@@ -372,7 +356,7 @@ header {
 
 
 
-/* ----ПОДВАЛ САЙТА---- */
+/* ----КНОПКА ВНИЗУ---- */
 .floppy__button {
   display: flex;
   align-items: center;
@@ -416,7 +400,6 @@ dialog {
   padding-inline: 31.5px 30.5px;
   padding-block: 32.5px 31.5px;
   background-color: var(--bg-color, #fff);
-  transition: opacity 0.3s ease-in-out;
   inline-size: clamp(21.313rem, 20.96rem + 1.5vw, 22.313rem);
 }
 
@@ -443,39 +426,4 @@ dialog:not([open]) {
 .dialog__button {
   padding-inline: 132.5px;
   padding-block: 12.5px;
-}
-
-
-
-/* ----АНИМАЦИЯ---- */
-@keyframes arrow {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-4px);
-  }
-}
-
-@keyframes scale {
-  0% {
-    transform: scale(1);
-    transform-origin: center;
-  }
-
-  100% {
-    transform: scale(1.5);
-    transform-origin: center;
-  }
-}
-
-@keyframes sparks {
-  0% {
-    fill-opacity: 0;
-  }
-
-  100% {
-    fill-opacity: 1;
-  }
 }

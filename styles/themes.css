@@ -6,8 +6,8 @@
 */
 
 :root.theme-light {
-  --title-wdth: 700;
-  --main-wdth: 400;
+  --title-wght: 700;
+  --main-wght: 400;
   --bg-color: #fff;
   --button-color: #fff;
   --accent-text-color: #fff;
@@ -22,8 +22,8 @@
 }
 
 :root.theme-dark {
-  --title-wdth: 785;
-  --main-wdth: 465;
+  --title-wght: 785;
+  --main-wght: 465;
   --bg-color: #000;
   --button-color: #00CC14;
   --accent-text-color: #00CC14;
@@ -39,8 +39,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --title-wdth: 785;
-    --main-wdth: 465;
+    --title-wght: 785;
+    --main-wght: 465;
     --bg-color: #000;
     --button-color: #00CC14;
     --accent-text-color: #00CC14;
