@@ -12,97 +12,67 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
-.button {
-  transition: 0.3s ease;
+
+.like-icon.is-liked .heart {
+  transform-origin: center;
+  animation: heart 0.3s ease-in 0.1s alternate;
 }
 
-.button::after {
-  transition: transform 0.5s ease-in-out;
-}
-
-.theme-menu__button:disabled::before{
-  animation: arrow 0.5s ease-in-out infinite alternate-reverse;
-}
-
-.card__icon-button {
-  transition: border-color 0.3s ease;
-}
-
-.core {
-  transition: fill 0.3s 0.03s linear;
-}
-
-.heart:hover .core{
-  transition: fill 0.3s linear;
-}
-
-.contour  {
-  transition: fill 0.3s 0.03s linear;
-}
-
-.heart:hover .contour {
-  transition: fill 0.1s linear;
+.like-icon.is-liked .contour {
+  fill: var(--color-heart-body, #FF0000);
+  transition: fill 0.3s 0.06s linear;
 }
 
 .main-body {
+  fill: transparent;
   transition: fill 0.3s linear;
 }
 
 .heart:hover .main-body {
+  fill: var(--color-heart-core, #000);
   transition: fill 0.3s 0.05s linear;
-}
-
-.heart:active .core{
-  transition: fill 0.3s linear;
 }
 
 .heart:active .main-body{
-  transition: fill 0.3s 0.05s linear;
-}
-
-.like-icon.is-liked .core {
-  transition: fill 0.03s linear;
+  fill: var(--color-heart-body, #FF0000);
 }
 
 .like-icon.is-liked .main-body {
-  transition: fill 0.3s 0.03s linear;
+  fill: var(--color-heart-body, #FF0000);
+  transition: fill 0.3s 0.05s linear;
 }
 
-.like-icon.is-liked .contour {
-  transition: fill 0.3s 0.06s linear;
+.core { 
+  fill: transparent; 
+  transition: fill 0.03s 0.03s linear;
 }
 
-.like-icon.is-liked .heart{
-  animation: scale 0.3s 0.1s ease-in alternate;
+.heart:hover .core{ 
+  fill: var(--color-heart-core, #000); 
+  transition: fill 0.3s linear; 
+}
+
+.heart:active .core{
+  fill: var(--color-heart-body, #FF0000);
+}
+
+.like-icon.is-liked .core { 
+  fill: var(--color-heart-body, #FF0000); 
+  transition: fill 0.03s linear; 
 }
 
 .like-icon.is-liked .sparks{
-  animation: sparks 0.3s 0.3s ease-in alternate;
-}
-
-dialog {
-  transition: opacity 0.3s ease-in-out;
-}
-
-@keyframes arrow {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-4px);
-  }
+  opacity: 1;
+  animation: sparks 0.3s 0.3s ease-in alternate backwards;
 }
 
 @keyframes scale {
   0% {
     transform: scale(1);
-    transform-origin: center;
   }
 
   100% {
     transform: scale(1.5);
-    transform-origin: center;
   }
 }
 

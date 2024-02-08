@@ -25,9 +25,21 @@ img {
   color: var(--main-color, #000);
   font-family: var(--main-font, sans-serif);
   background-color: var(--bg-color, #fff);
-  background-image: var(--bg-gradient, repeating-linear-gradient(90deg, var(--main-gradient-color, #d3d3d3), var(--main-gradient-color, #d3d3d3) 2px, transparent 2px, transparent 4px), repeating-linear-gradient(180deg, var(--main-gradient-color, #d3d3d3), var(--main-gradient-color, #d3d3d3) 2px, transparent 2px, transparent 4px), linear-gradient(var(--main-gradient-color, #d3d3d3) 0.01%, var(--accent-gradient-color, #1a1a1a)));
-  background-size: cover;
+  background-image: 
+    var(
+      --bg-gradient, 
+      repeating-linear-gradient(
+        90deg,#d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px
+      ),
+      repeating-linear-gradient(
+        180deg, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px
+      ),
+      linear-gradient(
+        180deg, #e7e7e7 0.01%, #1a1a1a
+      )
+    );
   background-position: center;
+  background-size: cover;
   min-inline-size: 320px;
   min-block-size: 100dvb;
   font-variation-settings: 'wght' var(--main-wdht, 400);
@@ -71,6 +83,7 @@ img {
   border: var(--border-card, 2px solid var(--main-color, #000));
   line-height: 90%;
   background-color: var(--bg-color, #fff);
+  transition: 0.3s ease;
   cursor: pointer;
 }
 
@@ -84,6 +97,7 @@ img {
   z-index: 0;
   color: var(--accent-text-color, #fff);
   background-color: var(--main-color, #000);
+  transition: transform 0.5s ease-in-out;
   transform: scaleX(0);
   transform-origin: left;
   inline-size: 100%;
@@ -175,8 +189,19 @@ header {
 .theme-menu__button:disabled::before{
   content: '▶';
   position: absolute;
+  animation: arrow 0.5s ease-in-out infinite alternate-reverse;
   inset-block-end: 0;
   inset-inline-start: -20px;
+}
+
+@keyframes arrow {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-4px);
+  }
 }
 
 
@@ -185,7 +210,7 @@ header {
 .main {
   display: flex;
   flex-direction: column;
-  gap: 50.5px;
+  gap: 50px;
   @media (width <= 375px) {
     gap: 51px;
   }
@@ -208,13 +233,12 @@ header {
 
 .card__title {
   column-gap: 5px;
-  border-block-end: var(--border-card, 2px solid var(--main-color, #000));
   padding: 4px 24px 3px 10px;
   font-size: 18px;
   font-variation-settings: 'wght' var(--title-wght, 700);
     @media (width <= 375px) {
-      max-inline-size: 350px;
       padding: 3.5px 10px 5.5px;
+      max-inline-size: 350px;
     }
 }
 
@@ -222,7 +246,6 @@ header {
   display: flex;
   flex-direction: column;
   gap: 27px;
-  border-block-start: 4px solid var(--main-color, #000);
   padding-inline: 24.9px;
   padding-block: 25px;
   font-size: 18px;
@@ -235,6 +258,8 @@ header {
 
 .card__img {
   position: relative;
+  border-block-start: 4px solid var(--main-color, #000);
+  border-block-end: var(--border-card, 2px solid var(--main-color, #000));
 }
 
 .card__img img {
@@ -273,6 +298,7 @@ header {
   position: relative;
   border: 2px solid transparent;
   background-color: transparent;
+  transition: border-color 0.3s ease;
   cursor: pointer;
   block-size: 38px;
 }
@@ -287,54 +313,6 @@ header {
   object-position: center;
   max-block-size: 100%;
   inline-size: 100%;
-}
-
-.core {
-  fill: transparent;
-}
-
-.heart:hover .core{
-  fill: var(--color-heart-core, #000);
-}
-
-.contour  {
-  fill: var(--color-heart-core, #000);
-}
-
-.heart:hover .contour {
-  fill: var(--color-heart-core, #000);
-}
-
-.main-body {
-  fill: transparent;
-}
-
-.heart:hover .main-body{
-  fill: var(--color-heart-core, #000);
-}
-
-.heart:active .core{
-  fill: var(--color-heart-body, #FF0000);
-}
-
-.heart:active .main-body{
-  fill: var(--color-heart-body, #FF0000);
-}
-
-.like-icon.is-liked .core {
-  fill: var(--color-heart-body, #FF0000);
-}
-
-.like-icon.is-liked .main-body {
-  fill: var(--color-heart-body, #FF0000);
-}
-
-.like-icon.is-liked .contour {
-  fill: var(--color-heart-body, #FF0000);
-}
-
-.like-icon.is-liked .sparks{
-  opacity: 1;
 }
 
 .card__like-button {
@@ -357,10 +335,28 @@ header {
 
 /* ----КНОПКА ВНИЗУ---- */
 .floppy__button {
+  margin: 0 auto;
+  margin-block-end: 105px;
+  padding-inline: 19px 21px;
+  padding-block: 15px;
+  @media (width <= 375px) {
+    padding-block: 20px 14px;
+  }
+}
+
+.floppy__text {
+  position: relative;
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 0 auto;
+  color: var(--button-color, #fff);
+  font-family: var(--accent-font, system-ui);
+  font-size: 14px;
+  mix-blend-mode: difference;
+  @media (width <= 375px) {
+    flex-direction: column;
+  }
 }
 
 .floppy__button .button__text {
@@ -369,16 +365,6 @@ header {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-  }
-}
-
-.floppy__button {
-  margin-block: 50px 105px;
-  padding-inline: 19px 21px;
-  padding-block: 15px;
-  @media (width <= 375px) {
-    margin-block-start: 51px;
-    padding-block: 20px 14px;
   }
 }
 
@@ -391,15 +377,23 @@ header {
 
 
 /* ----dialog---- */
-dialog {
+.floppy__dialog {
   position: fixed;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  border: var(--border-card, 2px solid var(--main-color, #000));
   padding-inline: 31.5px 30.5px;
-  padding-block: 32.5px 31.5px;
+  padding-block-end: 32.5px 31.5px;
   background-color: var(--bg-color, #fff);
+  transition: opacity 0.3s ease-in-out;
   inline-size: clamp(21.313rem, 20.96rem + 1.5vw, 22.313rem);
+}
+
+.floppy__dialog::backdrop {
+  opacity: 0.75;
+  background-color: #000;
+
 }
 
 dialog:not([open]) {
@@ -423,6 +417,6 @@ dialog:not([open]) {
 }
 
 .dialog__button {
-  padding-inline: 132.5px;
+  padding-inline: 129.5px;
   padding-block: 12.5px;
 }

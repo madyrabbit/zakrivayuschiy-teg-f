@@ -12,13 +12,21 @@
   --button-color: #fff;
   --accent-text-color: #fff;
   --main-color: #000;
-  --main-gradient-color: #d3d3d3;
-  --accent-gradient-color: #1a1a1a;
   --color-text-shadow: #fff;
   --color-box-shadow: #000;
   --color-heart-contour: #000;
   --color-heart-body: #FF0000;
   --color-heart-core: #000;
+  --bg-gradient: 
+  repeating-linear-gradient(
+    90deg,#d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px
+  ),
+  repeating-linear-gradient(
+    180deg, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px
+  ),
+  linear-gradient(
+    180deg, #e7e7e7 0.01%, #1a1a1a
+  );
 }
 
 :root.theme-dark {
@@ -28,13 +36,21 @@
   --button-color: #00CC14;
   --accent-text-color: #00CC14;
   --main-color: #00CC14;
-  --main-gradient-color: #004306;
-  --accent-gradient-color: #007f0c;
   --color-text-shadow: #000;
   --color-box-shadow: #00CC14;
   --color-heart-contour: #00CC14;
   --color-heart-body: #FF0000;
   --color-heart-core: #00CC14;
+  --bg-gradient: 
+  repeating-linear-gradient(
+    90deg,#000, #000 2px, transparent 2px, transparent 4px
+  ),
+  repeating-linear-gradient(
+    180deg, #000, #000 2px, transparent 2px, transparent 4px
+  ),
+  linear-gradient(
+    180deg, #007f0c 0.01%, #004306
+  );
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,12 +61,20 @@
     --button-color: #00CC14;
     --accent-text-color: #00CC14;
     --main-color: #00CC14;
-    --main-gradient-color: #004306;
-    --accent-gradient-color: #007f0c;
     --color-text-shadow: #000;
     --color-box-shadow: #00CC14;
     --color-heart-contour: #00CC14;
     --color-heart-body: #FF0000;
     --color-heart-core: #00CC14;
+    --bg-gradient: 
+    repeating-linear-gradient(
+      90deg,#000, #000 2px, transparent 2px, transparent 4px
+    ),
+    repeating-linear-gradient(
+      180deg, #000, #000 2px, transparent 2px, transparent 4px
+    ),
+    linear-gradient(
+      180deg, #007f0c 0.01%, #004306
+    );
   }
 }
