@@ -207,14 +207,13 @@ header {
 }
 
 .card__title {
-  display: flex;
   column-gap: 5px;
   border-block-end: var(--border-card, 2px solid var(--main-color, #000));
   padding: 4px 24px 3px 10px;
   font-size: 18px;
   font-variation-settings: 'wght' var(--title-wght, 700);
     @media (width <= 375px) {
-      flex-direction: column;
+      max-inline-size: 350px;
       padding: 3.5px 10px 5.5px;
     }
 }
