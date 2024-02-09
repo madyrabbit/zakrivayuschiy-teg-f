@@ -7,21 +7,25 @@
   --button-color-icon: #000;
   --accent-text-color: #fff;
   --main-color: #000;
-  --color-text-shadow: #fff;
   --color-box-shadow: #000;
   --color-heart-contour: #000;
   --color-heart-body: #FF0000;
   --color-heart-core: #000;
   --bg-gradient: 
-  repeating-linear-gradient(
-    90deg,#d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px
-  ),
-  repeating-linear-gradient(
-    180deg, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px
-  ),
-  linear-gradient(
-    180deg, #e7e7e7 0.01%, #1a1a1a
-  );
+    repeating-linear-gradient(
+      90deg,#d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px
+    ),
+    repeating-linear-gradient(
+      180deg, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px
+    ),
+    linear-gradient(
+      180deg, #e7e7e7 0.01%, #1a1a1a
+    );
+  --text-shadow:
+    1px 0 #fff,
+    0 -1px #fff,
+    -1px 0 #fff,
+    0 1px #fff;
   
 
   --main-font: 'Inter-Flex-Variable';
@@ -32,6 +36,5 @@
   --border-card: 2px solid var(--main-color, #000);
   --border-hover: 2px solid var(--main-color, #000);
   --header-padding-block-start: clamp(7.5rem, 7.153rem + 1.5vw, 8.5rem);
-  --text-shadow: 0.5px var(--color-text-shadow, #fff);
   --box-shadow: 2px 2px 0px 0px var(--color-box-shadow, #000);
 }

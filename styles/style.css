@@ -22,6 +22,7 @@ img {
 }
 
 .page {
+  background-attachment: fixed;
   color: var(--main-color, #000);
   font-family: var(--main-font, sans-serif);
   background-color: var(--bg-color, #fff);
@@ -42,7 +43,7 @@ img {
   background-size: cover;
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-variation-settings: 'wght' var(--main-wdht, 400);
+  font-weight: 400;
 }
 
 /* ----ПОВТОРЯЮЩИЕСЯ ЭЛЕМЕНТЫ---- */
@@ -140,6 +141,7 @@ header {
 
 .header__text {
   font-size: var(--size-text, clamp(0.875rem, 0.233rem + 2.77vw, 1.438rem));
+  font-weight: 400;
 }
 
 .theme-menu__list {
@@ -157,12 +159,14 @@ header {
   text-transform: uppercase;
   background-color: transparent;
   cursor: pointer;
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
 .theme-menu__button::after {
   content: '';
   position: absolute;
   background-color: var(--main-color, #000);
+  transition: transform 0.3s;
   transform: scaleX(0);
   transform-origin: left;
   inline-size: 100%;
@@ -178,7 +182,7 @@ header {
 
 .theme-menu__button:focus-visible::after {
   opacity: 0.6;
-  transform: scaleX(1); 
+  transform: scaleX(1);
 }
 
 .theme-menu__button:disabled {
@@ -192,16 +196,6 @@ header {
   animation: arrow 0.5s ease-in-out infinite alternate-reverse;
   inset-block-end: 0;
   inset-inline-start: -20px;
-}
-
-@keyframes arrow {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-4px);
-  }
 }
 
 
@@ -250,6 +244,7 @@ header {
   padding-block: 25px;
   font-size: 18px;
   line-height: 21px;
+  font-variation-settings: 'wght' var(--main-wght, 400);
     @media (width <= 375px) {
       padding-inline: 25px 25.96px;
       padding-block: 22px 25px;
@@ -276,7 +271,13 @@ header {
   font-family: var(--accent-font, system-ui);
   font-size: 14px;
   text-transform: uppercase;
-  text-shadow: var(--text-shadow, 0.5px var(--color-text-shadow, #fff));
+  text-shadow: var(
+    --text-shadow,
+    1px 0 #fff,
+    0 -1px #fff,
+    -1px 0 #fff,
+    0 1px #fff
+  );
   mix-blend-mode: hard-light;
   inset-inline-end: 25px;
   inset-block-start: 29px;
@@ -320,8 +321,7 @@ header {
   block-size: 38px;
 }
 
-.button__text,
-.dialog__text {
+.button__text {
   position: relative;
   z-index: 10;
   color: var(--button-color, #fff);
@@ -368,7 +368,10 @@ header {
   }
 }
 
-.floppy-icon-footer {
+.floppy-icon-button {
+  object-fit: cover;
+  width: 21px;
+  height: 21px;
   @media (width <= 375px) {
     transform: scale(1.4);
   }
@@ -383,11 +386,13 @@ header {
   flex-direction: column;
   gap: 30px;
   border: var(--border-card, 2px solid var(--main-color, #000));
-  padding-inline: 31.5px 30.5px;
-  padding-block-end: 32.5px 31.5px;
+  padding: 31.5px 31.5px 30.5px 31.5px;
   background-color: var(--bg-color, #fff);
   transition: opacity 0.3s ease-in-out;
   inline-size: clamp(21.313rem, 20.96rem + 1.5vw, 22.313rem);
+  @media (width <= 375px) {
+    padding: 32px 42px;
+  }
 }
 
 .floppy__dialog::backdrop {
@@ -401,7 +406,7 @@ dialog:not([open]) {
   pointer-events: none;
 }
 
-.dialog__text {
+.floppy__dialog div {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -409,14 +414,22 @@ dialog:not([open]) {
   text-align: left;
 }
 
+.floppy__dialog p {
+  width: 234px;
+  line-height: 150%; /* 21px */
+  text-transform: uppercase;
+}
+
 .floppy-icon-dialog {
-  display: block;
-  object-fit: cover;
-  inline-size: 30%;
-  block-size: calc(100% - 24px);
+  width: 39px;
+  height: 39px;
 }
 
 .dialog__button {
-  padding-inline: 129.5px;
-  padding-block: 12.5px;
+  text-transform: uppercase;
+  padding-inline: 129px;
+  padding-block: 12px;
+  @media (width <= 375px) {
+    padding-inline: 109px;
+  }
 }

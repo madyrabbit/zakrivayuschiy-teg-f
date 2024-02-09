@@ -393,19 +393,19 @@
       <button class="button floppy__button" type="button" onclick="window['dialog-id'].showModal();"
         aria-controls="dialog-id">
         <span class="floppy__text">
-          <svg class="floppy-icon-footer" viewBox="0 0 21 21" width="21" height="21">
+          <svg class="floppy-icon-button" viewBox="0 0 40 40">
             <use href="./svg/floppy.svg#floppy"></use>
           </svg>
           Сохранить на память
         </span>
       </button>
       <dialog id="dialog-id" class="floppy__dialog">
-        <span class="dialog__text">
-          <svg class="floppy-icon-dialog" viewBox="0 0 21 21">
+        <div class="button__text">
+          <svg class="floppy-icon-dialog" viewBox="0 0 40 40">
             <use href="./svg/floppy.svg#floppy"></use>
           </svg>
-          Вставьте дискету, чтобы продолжить
-        </span>
+          <p>Вставьте дискету, чтобы продолжить</p>
+        </div>
         <form method="dialog">
           <button class="button dialog__button" type="submit">
             <span class="button__text">ок</span>
