@@ -14,8 +14,13 @@
 */
 
 .like-icon.is-liked .heart {
-  transform-origin: center;
+  transform-origin: center; 
+  animation: scale 0.3s ease-in 0.1s alternate;
 }
+
+.contour {
+  transition: fill 0.1s linear;
+} 
 
 .like-icon.is-liked .contour {
   fill: var(--color-heart-body, #FF0000);
